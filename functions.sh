@@ -50,7 +50,7 @@ function canonical_path () {
 #   }
 #
 function equal () {
-  test "$#" -eq "2" && test "$1" -eq "$2"
+  [ "$#" -eq "2" ] && [ "$1" -eq "$2" ]
   return $?
 }
 
@@ -65,7 +65,7 @@ function equal () {
 #   }
 #
 function not_equal () {
-  test "$#" -eq "2" && test "$1" -ne "$2"
+  [ "$#" -eq "2" ] && [ "$1" -ne "$2" ]
   return $?
 }
 
@@ -93,7 +93,7 @@ function match () {
 #   }
 #
 function match_not () {
-  equal $# 2 && test "$1" != "$2"
+  equal $# 2 && [ "$1" != "$2" ]
   return $?
 }
 
@@ -122,7 +122,7 @@ function exists () {
 #   }
 #
 function exists_not () {
-  test "$#" -eq "1" && ls "$1" &> /dev/null
+  [ "$#" -eq "1" ] && ls "$1" &> /dev/null
   not_equal $? 0
   return $?
 }
@@ -149,12 +149,12 @@ function uri_encode () {
 
 # Check whether given string is empty
 function empty () {
-  test "$1" = ""
+  [ "$1" = "" ]
   return $?
 }
 
 # Check whether given string is NOT empty
 function not_empty () {
-  test "$1" != ""
+  [ "$1" != "" ]
   return $?
 }
